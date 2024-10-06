@@ -19,4 +19,12 @@ public class Book {
     private String author;
     private int publicshedYear;
     private String genre;
+
+    public Book(String title, String author,int publicshedYear,String genre){
+        this.title = title;
+        this.author = author;
+        this.publicshedYear = publicshedYear;
+        this.genre = genre;
+    }
+
 }
