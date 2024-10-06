@@ -3,11 +3,13 @@ package com.example.demo.Book;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
 @AllArgsConstructor
-@Table(name = "books", indexes = {
+@NoArgsConstructor
+@Table(name = "book", indexes = {
         @Index(name = "idx_title", columnList = "title"),
         @Index(name = "idx_author", columnList = "author")
 })

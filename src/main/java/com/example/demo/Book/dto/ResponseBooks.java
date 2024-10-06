@@ -1,11 +1,14 @@
 package com.example.demo.Book.dto;
 
+import com.example.demo.Book.Book;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 
+@Data
 @AllArgsConstructor
 public class ResponseBooks {
-    private String title;
-    private String author;
-    private int publicshedYear;
-    private String genre;
+    String title;
+    String author;
+    int publicshedYear;
+    String genre;
 }

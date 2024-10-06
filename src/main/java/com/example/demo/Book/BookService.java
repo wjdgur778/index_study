@@ -11,33 +11,37 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class BookService {
     private final BookRepository bookRepository;
-    private final Random r;
-    String[] str = {"novel,SF,romance,thriller,history"};
+    String[] str = {"novel","SF","romance","thriller","history"};
     @Transactional
-    public List<ResponseBooks> get_books() {
-        return bookRepository.findAll().stream().map(
-                book -> new ResponseBooks(book.getTitle(), book.getAuthor(), book.getPublicshedYear(), book.getGenre())
-        ).collect(Collectors.toList());
+    public ResponseBooks getByTitle(String title) {
+        Book book = bookRepository.findByTitleContainingIgnoreCase(title).orElse(null);
+        return new ResponseBooks(book.getTitle(),book.getAuthor(),book.getPublicshedYear(),book.getGenre());
     }
     @Transactional
-    public void add_books() {
+    public ResponseBooks getByAuthor(String author) {
+        Book book = bookRepository.findByAuthorContainingIgnoreCase(author).orElse(null);
+        return new ResponseBooks(book.getTitle(),book.getAuthor(),book.getPublicshedYear(),book.getGenre());
+    }
+    @Transactional
+    public List<ResponseBooks> getByGenre(String genre) {
+        return bookRepository.findByGenreContainingIgnoreCase(genre).stream().map(
+               book ->  new ResponseBooks(book.getTitle(),book.getAuthor(),book.getPublicshedYear(),book.getGenre())
+        ).collect(Collectors.toList());
+    }
 
-        List<Book> books = new ArrayList<>();
+    @Transactional
+    public void add_books() {
         Random r = new Random();
-        byte[] t_data = new byte[7];
-        byte[] a_data = new byte[7];
-        r.nextBytes(t_data);
-        r.nextBytes(a_data);
-        String title = new String(t_data, Charset.forName("UTF-8"));
-        String author = new String(a_data, Charset.forName("UTF-8"));
+        List<Book> books = new ArrayList<>();
         for (int i = 0; i < 30000; i++) {
-            books.add(new Book(title, author, 2014+(r.nextInt()%20),str[r.nextInt()%5]));
+            books.add(new Book(UUID.randomUUID().toString(), UUID.randomUUID().toString(), 2014+(r.nextInt()%20),str[Math.abs(r.nextInt())%4]));
         }
         bookRepository.saveAll(books);
     }
