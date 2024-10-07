@@ -21,17 +21,17 @@ public class BookService {
     String[] str = {"novel","SF","romance","thriller","history"};
     @Transactional
     public ResponseBooks getByTitle(String title) {
-        Book book = bookRepository.findByTitleContainingIgnoreCase(title).orElse(null);
+        Book book = bookRepository.findByTitle(title).orElse(null);
         return new ResponseBooks(book.getTitle(),book.getAuthor(),book.getPublicshedYear(),book.getGenre());
     }
     @Transactional
     public ResponseBooks getByAuthor(String author) {
-        Book book = bookRepository.findByAuthorContainingIgnoreCase(author).orElse(null);
+        Book book = bookRepository.findByAuthor(author).orElse(null);
         return new ResponseBooks(book.getTitle(),book.getAuthor(),book.getPublicshedYear(),book.getGenre());
     }
     @Transactional
     public List<ResponseBooks> getByGenre(String genre) {
-        return bookRepository.findByGenreContainingIgnoreCase(genre).stream().map(
+        return bookRepository.findByGenre(genre).stream().map(
                book ->  new ResponseBooks(book.getTitle(),book.getAuthor(),book.getPublicshedYear(),book.getGenre())
         ).collect(Collectors.toList());
     }
