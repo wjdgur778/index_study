@@ -59,6 +59,7 @@ index란 데이터베이스에서 **검색속도를 향상시키기 위해** 특
     <img src=".\README_image\5.png" alt="3" style="zoom:75;" />
 
   * 선택도가 낮은 경우 효율이 떨어짐
+    
     * 필드의 값이 많이 중복되어 있으면(예: `성별`, `상태값` 등) 인덱스가 효율적으로 작동하지 않는다.
 
 ### <성능비교>
@@ -74,11 +75,15 @@ index란 데이터베이스에서 **검색속도를 향상시키기 위해** 특
 
 **인덱스를 적용한 필드**
 
-<img src=".\README_image\2.png" alt="2" style="zoom: 80%;" />![1](.\README_image\1.png)
+<img src=".\README_image\2.png" alt="2" style="zoom: 80%;" />
+
+<img src=".\README_image\1.png" alt="2" style="zoom: 90%;" />
 
 **인덱스 미적용 필드**
 
-<img src=".\README_image\3.png" alt="3" style="zoom:80%;" />![4](.\README_image\4.png)
+<img src=".\README_image\3.png" alt="3" style="zoom:80%;" />
+
+<img src=".\README_image\4.png" alt="3" style="zoom:90%;" />
 
 | 필드 타입    | 데이터 개수 | 인덱스 적용 여부 | 조회 시간 |
 | ------------ | ----------- | ---------------- | --------- |
