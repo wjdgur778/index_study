@@ -42,6 +42,8 @@ public class BookService {
         List<Book> books = new ArrayList<>();
         for (int i = 0; i < 30000; i++) {
             books.add(new Book(UUID.randomUUID().toString(), UUID.randomUUID().toString(), 2014+(r.nextInt()%20),str[Math.abs(r.nextInt())%4]));
+//            books.add(new Book("5669b1c9-fc13-4589-b498-3e10957a8e06", UUID.randomUUID().toString(), 2014+(r.nextInt()%20),str[Math.abs(r.nextInt())%4]));
+
         }
         bookRepository.saveAll(books);
     }
