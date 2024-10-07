@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "book", indexes = {
         @Index(name = "idx_title", columnList = "title"),
-        @Index(name = "idx_author", columnList = "author")
 })
 public class Book {
     @Id
