@@ -27,7 +27,9 @@
   
   위 코드를 통해 title 필드에 idx를 적용
   
-* book 데이터 삽입시 **UUID.randomUUID()**와 **Random()** 을 통해 무작위 book 데이터를 삽입할 수 있는 add_books() 구현
+* book 데이터 삽입시 ```UUID.randomUUID()``` 와 ```Random()``` 을 통해 무작위 book 데이터를 삽입할 수 있는 add_books() 구현
+
+* ``` SHOW TABLE STATUS LIKE 'book'``` 와 ```explain select * from book where title = "value"``` 를 통해 MYSQL에 title로 인덱스가 잘 만들어졌는지, 인덱스를 통해 조회가 잘 되는지 확인한다.
 
 ### <Index란?>
 
@@ -68,8 +70,8 @@ index란 데이터베이스에서 **검색속도를 향상시키기 위해** 특
 
 * postman을 이용하여 요청과 응답을 받기까지의 시간 확인
 
-  * **단,** MySQL은 동일한 쿼리가 여러 번 실행될 때 **쿼리 캐시(Query Cache)**를 활용해 성능을 개선하기 때문에 첫 쿼리를 대상으로 시간을 확인
-  * **`LIKE '%value%'`**와 같은 (부분문자열 조회)패턴은 **인덱스를 무시**하고 **풀 테이블 스캔(full table scan)**을 진행하기 때문에 사용하지 않는다.
+  * **단,** MySQL은 동일한 쿼리가 여러 번 실행될 때 **쿼리 캐시(Query Cache)** 를 활용해 성능을 개선하기 때문에 첫 쿼리를 대상으로 시간을 확인
+  * **`LIKE '%value%'`**와 같은 (부분문자열 조회)패턴은 **인덱스를 무시**하고 **풀 테이블 스캔(full table scan)** 을 진행하기 때문에 사용하지 않는다.
 
   
 
